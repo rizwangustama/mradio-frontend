@@ -13,13 +13,13 @@
                         </ul>
                     </div>
                     <div class="flex flex-col gap-4 md:gap-6">
-                        <h2 class="heading-3 text-white">{{ partnership.title }}</h2>
+                        <h2 class="heading-3 text-white">{{ mediapartner.title }}</h2>
                         <ul>
                             <li v-for="(data, i) in mediapartner.list" class="paragraph-2 text-white">{{ data }}</li>
                         </ul>
                     </div>
                     <div class="flex flex-col gap-6">
-                        <h2 class="heading-3 text-white">{{ partnership.title }}</h2>
+                        <h2 class="heading-3 text-white">{{ mediapartner.title }}</h2>
                         <ul>
                             <li v-for="(data, i) in address.list" class="paragraph-2 text-white">{{ data }}</li>
                         </ul>
@@ -36,7 +36,7 @@ export default{
     data() {
         return {
             partnership: {
-                title: "Partnership",
+                title: "Email",
                 list: [
                     "Mradio jakarta",
                     "m.radioumj@gmail.com"
