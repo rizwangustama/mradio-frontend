@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font Familly */
+/* @import './font.css'; */
+
+@layer base {
+    html{
+        @apply bg-bg-primary;
+    }
+    body {
+        @apply font-default;
+    }
+
+    .heading-1{
+        @apply text-3xl md:text-4xl xl:text-[52px] font-heading;
+    }
+
+    .heading-2 {
+        @apply text-4xl xl:text-5xl font-heading;
+    }
+
+    .heading-3 {
+        @apply lg:text-lg lg:leading-snug xl:text-2xl xl:leading-normal font-heading;
+    }
+    
+    /* Font Size 18 */
+    .paragraph-1 {
+        @apply text-base sm:text-base xl:text-lg;
+    }
+
+    /* Font-size 16 */
+    .paragraph-2 {
+        @apply text-sm md:text-base;
+    }
+
+    /* Font Size 14 */
+    .paragraph-3 {
+        @apply text-xs md:text-sm;
+    }
+}
+
+@layer components {
+    .btn-primary {  
+        @apply py-[14px] px-12 bg-primary text-base;
+    }
+
+    .btn-primary span {
+        @apply flex items-center gap-4 text-white;
+    }
+
+    .btn-secondary {
+        @apply py-[14px] px-12 bg-transparent text-base outline outline-1  outline-offset-2 outline-white text-white;
+    }
+    .btn-secondary:hover {
+        @apply bg-white transition-colors text-bg-primary;
+    }
+
+    .btn-secondary:hover span {
+        @apply text-bg-primary;
+    }
+
+    .btn-secondary:hover span svg{
+        fill: black;
+    }
+
+    .btn-secondary span {
+        @apply flex items-center gap-4 text-white;
+    }
+}

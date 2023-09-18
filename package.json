@@ -1,0 +1,33 @@
+{
+  "name": "mradio",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@splidejs/splide-extension-auto-scroll": "^0.5.3",
+    "@splidejs/vue-splide": "^0.6.12",
+    "aos": "^2.3.4",
+    "axios": "^1.4.0",
+    "flowbite": "^1.6.6",
+    "pinia": "^2.0.36",
+    "spotify-web-api-js": "^1.5.2",
+    "vue": "^3.3.2",
+    "vue-easy-lightbox": "^1.16.0",
+    "vue-final-modal": "^4.4.4",
+    "vue-loading-overlay": "^6.0.3",
+    "vue-router": "^4.2.0",
+    "vue3-carousel": "^0.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.3",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.24",
+    "tailwindcss": "^3.3.2",
+    "vite": "^4.3.5"
+  }
+}
