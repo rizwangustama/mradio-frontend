@@ -37,7 +37,8 @@ export default {
             oneNews: null,
             listTopNews: null,
             listLastNews: null,
-            isLoading: false
+            isLoading: false,
+            name: ''
         }
     },
     mounted() {
