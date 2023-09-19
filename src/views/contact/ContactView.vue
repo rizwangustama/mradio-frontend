@@ -19,7 +19,7 @@
                         </ul>
                     </div>
                     <div class="flex flex-col gap-6">
-                        <h2 class="heading-3 text-white">{{ mediapartner.title }}</h2>
+                        <h2 class="heading-3 text-white">{{ address.title }}</h2>
                         <ul>
                             <li v-for="(data, i) in address.list" class="paragraph-2 text-white">{{ data }}</li>
                         </ul>
@@ -36,17 +36,18 @@ export default{
     data() {
         return {
             partnership: {
-                title: "Email",
+                title: "Partnership",
                 list: [
-                    "Mradio jakarta",
-                    "m.radioumj@gmail.com"
+                    "Mradio Jakarta Business",
+                    "0812-7697-5194",
+                    "m.radioumj@gmail.com",
                 ]
             },
             mediapartner: {
                 title: "Media partner",
                 list: [
-                    "Muhammad rafi azhar",
-                    "0895-6041-8562",
+                    "Sinta Yunira",
+                    "0822-6030-1540",
                     "m.radioumj@gmail.com"
                 ]
             },
