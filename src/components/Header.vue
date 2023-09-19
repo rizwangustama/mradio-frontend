@@ -13,7 +13,8 @@
                                 <h1 class="font-bold text-2xl sm:text-3xl md:text-4xl font-heading text-center">Our Social Media</h1>
                                 <span class="w-full h-[1px] bg-black my-5"></span>
                                 <div class="flex justify-center">
-                                    <a href="" class="px-2">
+                                    <!-- Instagram -->
+                                    <a href="https://www.instagram.com/m_radioumj/" class="px-2">
                                         <svg width="33" height="32" viewBox="0 0 33 32" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -21,7 +22,8 @@
                                                 fill="#362D40" />
                                         </svg>
                                     </a>
-                                    <a href="" class="px-2">
+                                    <!-- Tiktok -->
+                                    <a href="https://www.tiktok.com/@mradioumj?lang=en" class="px-2">
                                         <svg width="33" height="32" viewBox="0 0 33 32" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -30,7 +32,8 @@
                                         </svg>
 
                                     </a>
-                                    <a href="" class="px-2">
+                                    <!-- Twitter -->
+                                    <a href="https://twitter.com/M_RadioUMJ" class="px-2">
                                         <svg width="33" height="32" viewBox="0 0 33 32" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path

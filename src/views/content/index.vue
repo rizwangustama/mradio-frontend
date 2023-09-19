@@ -25,7 +25,7 @@
                     </Splide>
                 </div>
                 <div class="w-full md:w-1/2" v-if="youtubeList">
-                    <Splide id="slide-content-1" :options="settingsOne" aria-label="My Content">
+                    <Splide id="slide-content-1" :options="settingsTrue" aria-label="My Content">
                         <SplideSlide v-for="(item, index) in youtubeList" :key="index">
                             <a :href="item.url">
                                 <img style="height: 100%; width: 100%; object-fit: cover;" :src="item.image" alt="content">
@@ -33,6 +33,7 @@
                         </SplideSlide>
                     </Splide>
                 </div>
+
             </div>
         </div>
     </div>
@@ -70,6 +71,19 @@ export default {
                     speed: 2,
                 },
                 autoPlay: 'pause',
+                arrowPath: 'M21 12L8.2 24L8.2 0L21 12Z fill="white"'
+            },
+            settingsTrue: {
+                loop: true,
+                perPage: 2,
+                gap: '24px',
+                arrows: true,
+                pagination: false,
+                wheel: true,
+                rewind: true, 
+                autoplay:true,
+                slidesToScroll:1,
+                interval: 2000,
                 arrowPath: 'M21 12L8.2 24L8.2 0L21 12Z fill="white"'
             },
             youtubeList: [],
