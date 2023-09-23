@@ -10,13 +10,14 @@
             </template>
             <template v-else>
                 <div class="h-[270px]">
-                    <img class="h-full w-full object-cover" loading="lazy" width="700" height="270" :src="benner.image" :alt="benner.title">
+                    <img class="h-full w-full object-cover" loading="lazy" width="700" height="270" :src="benner.image"
+                        :alt="benner.title">
                 </div>
             </template>
 
-            <div class="flex flex-col md:flex-row gap-12 py-[60px]">
-                <div class="w-full md:w-1/2">
-                    <Splide id="slide-content" v-if="sportifyList" :options="settingsOne" aria-label="My Content">
+            <div class="flex flex-col md:flex-row gap-6 mt-16">
+                <div class="md:w-1/2 lg:h-[544px]">
+                    <Splide id="slide-content" :options="settings" aria-label="My Favorite Images">
                         <SplideSlide v-for="(item, index) in sportifyList" :key="index">
                             <a :href="item.url">
                                 <img style="height: 100%; width: 100%; object-fit: cover;" :src="item.image" alt="content">
@@ -24,16 +25,25 @@
                         </SplideSlide>
                     </Splide>
                 </div>
-                <div class="w-full md:w-1/2" v-if="youtubeList">
-                    <Splide id="slide-content-1" :options="settingsTrue" aria-label="My Content">
+                <div class="md:w-1/2 hidden lg:block">
+                    <Splide id="slide-content" :options="settingsContent" aria-label="My Favorite Images">
                         <SplideSlide v-for="(item, index) in youtubeList" :key="index">
                             <a :href="item.url">
-                                <img style="height: 100%; width: 100%; object-fit: cover;" :src="item.image" alt="content">
+                                <img style="width: 100%; height: 100%; object-fit: cover;" :src="item.image" alt="content">
                             </a>
                         </SplideSlide>
                     </Splide>
                 </div>
 
+                <div class="md:w-1/2 lg:hidden">
+                    <Splide id="slide-content" :options="settings" aria-label="My Favorite Images">
+                        <SplideSlide v-for="(item, index) in youtubeList" :key="index">
+                            <a :href="item.url">
+                                <img style="width: 100%; height: 100%; object-fit: cover;" :src="item.image" alt="content">
+                            </a>
+                        </SplideSlide>
+                    </Splide>
+                </div>
             </div>
         </div>
     </div>
@@ -61,29 +71,39 @@ export default {
     data() {
         return {
             isLoading: false,
-            settingsOne: {
-                rewing: true,
-                perPage: 1,
+            settings: {
+                rewind: true, 
+                perPage: 1, 
                 arrows: true,
                 pagination: false,
                 lazyLoad: 'nearby',
-                autoScroll: {
-                    speed: 2,
-                },
-                autoPlay: 'pause',
+                slidesToScroll:1,
+                interval: 2000,
+                autoplay: true,
+                autoplaySpeed:0,
+                autoplaySpeed: 1,
                 arrowPath: 'M21 12L8.2 24L8.2 0L21 12Z fill="white"'
             },
-            settingsTrue: {
+
+            settingsContent: {
                 loop: true,
                 perPage: 2,
+                direction: 'ttb',
                 gap: '24px',
-                arrows: true,
+                arrows: false,
                 pagination: false,
+                height: '34rem',
                 wheel: true,
                 rewind: true, 
+                lazyLoad: 'nearby',
                 autoplay:true,
                 slidesToScroll:1,
                 interval: 2000,
+                breakpoints: {
+                    640: {
+                        perPage: 1,
+                    },
+                },
                 arrowPath: 'M21 12L8.2 24L8.2 0L21 12Z fill="white"'
             },
             youtubeList: [],
@@ -136,14 +156,10 @@ export default {
         // Slide Content
         buttonArrowLeft() {
             const getButtonArrowLeft = document.querySelector('#slide-content .splide__arrow--prev svg');
+            console.log(getButtonArrowLeft);
             getButtonArrowLeft.setAttribute('viewBox', '0 0 24 24');
             getButtonArrowLeft.style.width = '24px';
             getButtonArrowLeft.style.height = '24px';
-
-            const getButtonArrowLeftConntent1 = document.querySelector('#slide-content-1 .splide__arrow--prev svg');
-            getButtonArrowLeftConntent1.setAttribute('viewBox', '0 0 24 24');
-            getButtonArrowLeftConntent1.style.width = '24px';
-            getButtonArrowLeftConntent1.style.height = '24px';
         },
 
         buttonArrowRight() {
@@ -151,41 +167,31 @@ export default {
             getButtonArrowRight.setAttribute('viewBox', '0 0 24 24');
             getButtonArrowRight.style.width = '24px';
             getButtonArrowRight.style.height = '24px';
-
-            const getButtonArrowRightConntent1 = document.querySelector('#slide-content-1 .splide__arrow--next svg');
-            getButtonArrowRightConntent1.setAttribute('viewBox', '0 0 24 24');
-            getButtonArrowRightConntent1.style.width = '24px';
-            getButtonArrowRightConntent1.style.height = '24px';
         }
     },
 
 }
 </script>
 <style>
-#slide-content,
-#slide-content-1 {
+#slide-content {
     @apply p-0 h-full;
 }
 
-#slide-content #slide-content-track,
-#slide-content-1 #slide-content-track {
+#slide-content #slide-content-track {
     @apply h-full;
 }
 
-#slide-content .splide__arrow--prev,
-#slide-content-1 .splide__arrow--prev {
+#slide-content .splide__arrow--prev {
     border: 1.5px solid white;
     @apply rounded-full h-[52px] w-[52px];
 }
 
-#slide-content .splide__arrow--next,
-#slide-content-1 .splide__arrow--next {
+#slide-content .splide__arrow--next {
     border: 1.5px solid white;
     @apply rounded-full h-[52px] w-[52px];
 }
 
-#slide-content .splide__arrow svg,
-#slide-content-1 .splide__arrow svg {
+#slide-content .splide__arrow svg {
     fill: white;
 }
 </style>

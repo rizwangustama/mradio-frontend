@@ -7,10 +7,10 @@
             <div class="grid grid-cols-1 gap-x-6 gap-y-10 mt-20">
                 <template v-for="(item, index) in newsList" :key="index">
                     <a :href="link">
-                        <div class="flex flex-row gap-10  justify-center items-center gap-3">
-                            <img class="w-3/12 h-[200px] object-cover"
-                                loading="lazy" width="262" height="262" :src="item.image" :alt="title">
-                            <div class="w-8/12 flex gap-3 flex-col">
+                        <div class="bg-[#362D40] flex flex-col md:flex-row gap-10  justify-start items-center gap-3">
+                            <img class="w-full md:w-3/12 h-[200px] object-cover" loading="lazy" width="262" height="262"
+                                :src="item.image" :alt="title">
+                            <div class="w-full md:w-8/12 flex gap-3 flex-col">
                                 <h3 class="heading-3 text-white hover:text-gray-400 line-clamp-2">{{ item.title }}</h3>
                                 <p class="paragraph-3 text-semi-white line-clamp-2 md:line-clamp-3">{{ item.content }}</p>
                             </div>
@@ -18,7 +18,9 @@
                     </a>
                 </template>
             </div>
+            <!-- <button @click="loadMore" class="btn-secondary flex mx-auto mt-10">Load More</button> -->
         </div>
+
     </div>
 </template>
 <script>
@@ -34,51 +36,52 @@ export default {
     data() {
         return {
             newsList: null,
-            oneNews: null,
-            listTopNews: null,
-            listLastNews: null,
             isLoading: false,
+            visibleNewsList: [],
+            pageSize: 5, // Jumlah berita per load
+            currentPage: 1, // Indeks saat ini dari berita yang ditampilkan
         }
     },
+
+    computed: {
+        totalPage() {
+            return Math.ceil(this.newsList.length / this.pageSize);
+        },
+
+        paginatedData() {
+            const start = (this.currentPage - 1) * this.pageSize;
+            const end = start + this.pageSize;
+            return this.newsList.slice(start, end);
+        },
+    },
+
     mounted() {
         this.starter();
+
     },
+
     methods: {
         async starter() {
             try {
                 this.isLoading = true
                 await this.getListNews();
-                await this.getOneNews();
-                await this.getTopNews();
-                await this.getLastNews();
-                console.log(this.oneNews[0].image);
+                // await this.loadMore();
                 this.isLoading = false;
             } catch (error) {
 
             }
-
         },
 
         async getListNews() {
             try {
                 const res = await this.$api.get('/news');
-                console.log(res.data.data);
-                this.newsList = res.data.data
+                let getdataNewsList = res.data.data;
+                getdataNewsList.reverse();
+                this.newsList = getdataNewsList;
+                this.loadMore();
             } catch (error) {
                 console.log(error);
             }
-
-        },
-
-        getOneNews() {
-            this.oneNews = this.newsList.slice(0, 1);
-        },
-
-        getTopNews() {
-            this.listTopNews = this.newsList.slice(2, 6);
-        },
-        getLastNews() {
-            this.listLastNews = this.newsList.slice(7)
         },
     },
 }
