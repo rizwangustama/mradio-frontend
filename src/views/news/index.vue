@@ -3,7 +3,19 @@
     <!-- Component Last News -->
     <div class="py-[120px] bg-[#251E2C]">
         <div class="container">
-            <h1 class="heading-2 text-white text-center">Last News</h1>
+            <template v-if="benner.style == 1 && (benner.title || benner.content)">
+                <div class="py-[104px] border-2 border-white border-solid bg-[#251E2C]">
+                    <h1 class="heading-2 text-white text-center " v-if="benner.title">{{ benner.title }}</h1>
+                    <p class="text-center text-semi-white mt-4" v-if="benner.content">{{ benner.content }}</p>
+                </div>
+            </template>
+            <template v-else>
+                <div class="h-[270px]">
+                    <img class="h-full w-full object-cover" width="700" height="270" loading="lazy" :src="benner.image" :alt="benner.title">
+                </div>
+            </template>
+
+            <!-- <h1 class="heading-2 text-white text-center">Last News</h1> -->
             <div class="grid grid-cols-1 gap-x-6 gap-y-10 mt-20">
                 <template v-for="(item, index) in newsList" :key="index">
                     <a :href="link">
@@ -40,6 +52,7 @@ export default {
             visibleNewsList: [],
             pageSize: 5, // Jumlah berita per load
             currentPage: 1, // Indeks saat ini dari berita yang ditampilkan
+            benner: {}
         }
     },
 
@@ -65,11 +78,19 @@ export default {
             try {
                 this.isLoading = true
                 await this.getListNews();
+                await this.getBenner();
                 // await this.loadMore();
                 this.isLoading = false;
             } catch (error) {
 
             }
+        },
+
+        async getBenner() {
+            const id = 3;
+            const responese = await this.$api.get(`/benner/${id}`);
+            console.log(responese.data.data[0]);
+            this.benner = responese.data.data[0];
         },
 
         async getListNews() {
